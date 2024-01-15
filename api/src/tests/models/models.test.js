@@ -1,4 +1,4 @@
-const { Country, Activity, conn } = require('../../src/db.js')
+const { Country, Activity, conn } = require('../../db')
 const { describe, expect, beforeAll, beforeEach, it } = require('@jest/globals')
 
 describe('Models TEST', () => {

@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const request = require('supertest')
-const app = require('../../src/app.js')
+const app = require('../../app.js')
 const { Op } = require('sequelize')
-const { conn, Country } = require('../../src/db.js')
+const { conn, Country } = require('../../db.js')
 const { describe, expect, it, beforeAll, afterAll } = require('@jest/globals')
 const agent = request(app)
 
@@ -52,7 +52,7 @@ describe('Routes TEST', () => {
         season: 'Verano',
         countries: ['HKG', 'CCK', 'BEL', 'UMI', 'ATG']
       }
-      const response = await agent.post('/countries/activities')
+      const response = await agent.post('/activities')
         .send(newActivity)
       expect(response.status).toBe(201)
     })
