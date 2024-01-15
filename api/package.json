@@ -1,0 +1,35 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "api que usa datos de allCountries y en una DB hace CRUD",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose",
+    "start": "nodemon -L"
+  },
+  "keywords": [],
+  "author": "carjuancara",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.35.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "babel-jest": "^29.7.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.2",
+    "ts-jest": "^29.1.1",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.3.3"
+  },
+  "eslintConfig": {
+    "extends": "node_modules/standard/eslintrc.json"
+  }
+}
