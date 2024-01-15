@@ -24,3 +24,6 @@ commits-esp.json
 *.njsproj
 *.sln
 *.sw?
+
+# Variable de entorno
+.env
