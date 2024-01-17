@@ -49,9 +49,6 @@ const countriesSlice = createSlice({
         })
       }
     },
-    backup: (state, action) => {
-      state.backupCountries = state.allCountries
-    },
     restoreAllCountries: (state, action) => {
       state.allCountries = state.backupCountries
     }
@@ -59,4 +56,4 @@ const countriesSlice = createSlice({
 })
 
 export default countriesSlice.reducer
-export const { updateAllCountries, prevPage, goPage, nextPage, changeFilter, changeOrder, filterByName, filterAllCountries, backup, restoreAllCountries } = countriesSlice.actions
+export const { updateAllCountries, prevPage, goPage, nextPage, changeFilter, changeOrder, filterByName, filterAllCountries, restoreAllCountries } = countriesSlice.actions
