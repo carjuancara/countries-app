@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 export default function CardDetail () {
@@ -13,7 +13,7 @@ export default function CardDetail () {
   }, [])
 
   return (
-    <div className='flex h-[88.5vh] flex-wrap justify-center text-3xl bg-gray-800'>
+    <div className='flex h-full flex-wrap justify-center text-3xl bg-gray-800'>
       <div className='flex w-2/3 h-[55vh] mt-12'>
         <div className=' block mt-2 mr-4 rounded-lg w-2/4 h-[45vh] border-2 border-gray-400'>
           <img className='rounded-lg h-full' src={countriesDetail.flags} alt='img not found' />
@@ -57,6 +57,14 @@ export default function CardDetail () {
             </label>
           </div>
         </div>
+      </div>
+      <div className='flex justify-end items-center w-full h-10 pr-60'>
+        <Link to='/home' className='flex h-10 px-4 rounded-lg text-fondo gap-4 items-center bg-secundario '>
+          <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-6 h-6'>
+            <path strokeLinecap='round' strokeLinejoin='round' d='M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3' />
+          </svg>
+          Volver al inicio
+        </Link>
       </div>
     </div>
   )
