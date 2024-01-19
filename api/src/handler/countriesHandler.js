@@ -11,7 +11,9 @@ const getCountries = async (req, res) => {
   const { name } = req.query
   try {
     if (!name) {
-      const infoCleaned = await Country.findAll()
+      const infoCleaned = await Country.findAll({
+        order: [['name', 'ASC']] // Ordena ascendentemente por el campo 'name'
+      })
       if (infoCleaned.length === 0) {
         const countries = (await axios('https://restcountries.com/v3/all')).data
         const infoCleaned = cleanedCountries(countries)
