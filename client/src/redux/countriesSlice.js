@@ -13,14 +13,15 @@ const countriesSlice = createSlice({
   reducers: {
     updateAllCountries: (state, action) => {
       state.allCountries = action.payload
+      state.backupCountries = action.payload
     },
-    prevPage: (state, action) => {
+    prevPage: (state) => {
       state.currentPage = state.currentPage - 1
     },
     goPage: (state, action) => {
       state.currentPage = action.payload
     },
-    nextPage: (state, action) => {
+    nextPage: (state) => {
       state.currentPage = state.currentPage + 1
     },
     changeFilter: (state, action) => {
@@ -31,10 +32,10 @@ const countriesSlice = createSlice({
     },
     filterByName: (state, action) => {
       const search = action.payload.toLowerCase()
-      state.backupCountries = state.allCountries
       state.allCountries = state.allCountries.filter(country => country.name.toLowerCase().includes(search))
+      state.currentPage = 1
     },
-    filterAllCountries: (state, action) => {
+    filterAllCountries: (state) => {
       if (state.order === 'ASC') {
         state.allCountries = state.allCountries.sort((a, b) => {
           if (a[state.filter] > b[state.filter]) return 1
@@ -56,4 +57,4 @@ const countriesSlice = createSlice({
 })
 
 export default countriesSlice.reducer
-export const { updateAllCountries, prevPage, goPage, nextPage, changeFilter, changeOrder, filterByName, filterAllCountries, restoreAllCountries } = countriesSlice.actions
+export const { updateAllCountries, prevPage, goPage, nextPage, loadCountries, changeFilter, changeOrder, filterByName, filterAllCountries, restoreAllCountries } = countriesSlice.actions
