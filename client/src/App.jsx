@@ -4,6 +4,8 @@ import Cards from './components/Cards'
 import LandingPage from './components/LandingPage'
 import CardDetail from './components/CardDetail'
 import Navbar from './components/Navbar'
+import Paginated from './components/Paginated'
+
 function App () {
   return (
     <div>
@@ -14,6 +16,7 @@ function App () {
             <div>
               <Navbar />
               <Cards />
+              <Paginated />
               <Footer />
             </div>
         }
