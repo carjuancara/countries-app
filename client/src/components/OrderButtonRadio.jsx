@@ -12,8 +12,25 @@ function OrderButtonRadio () {
   }
   return (
     <div className='join mb-2'>
-      <input className='join-item btn' type='radio' name='order' aria-label='ASC' value='ASC' onClick={(e) => handlerFilterChange(e)} />
-      <input className='join-item btn' type='radio' name='order' aria-label='DESC' value='DESC' onClick={(e) => handlerFilterChange(e)} />
+      <input
+        className='join-item btn'
+        type='radio'
+        name='order'
+        aria-label='ASC'
+        value='ASC'
+        onClick={(e) => handlerFilterChange(e)}
+        checked={order === 'ASC'}
+        defaultChecked={order === 'ASC'}
+      />
+      <input
+        className='join-item btn'
+        type='radio'
+        name='order'
+        aria-label='DESC'
+        value='DESC'
+        onClick={(e) => handlerFilterChange(e)}
+        checked={order === 'DESC'}
+      />
     </div>
   )
 }

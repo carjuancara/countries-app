@@ -11,9 +11,34 @@ function FilterButtonRadio () {
   }
   return (
     <div className='join mb-2'>
-      <input className='join-item btn ' type='radio' name='filter' aria-label='Nombre' value='name' onClick={(e) => handlerFilterChange(e)} />
-      <input className='join-item btn' type='radio' name='filter' aria-label='Capital' value='capital' onClick={(e) => handlerFilterChange(e)} />
-      <input className='join-item btn' type='radio' name='filter' aria-label='Poblacion' value='population' onClick={(e) => handlerFilterChange(e)} />
+      <input
+        className='join-item btn'
+        type='radio'
+        name='filter'
+        aria-label='Nombre'
+        value='name'
+        onClick={(e) => handlerFilterChange(e)}
+        checked={filter === 'name'}
+        defaultChecked={filter === 'name'}
+      />
+      <input
+        className='join-item btn'
+        type='radio'
+        name='filter'
+        aria-label='Capital'
+        value='capital'
+        onClick={(e) => handlerFilterChange(e)}
+        checked={filter === 'capital'}
+      />
+      <input
+        className='join-item btn'
+        type='radio'
+        name='filter'
+        aria-label='Poblacion'
+        value='population'
+        onClick={(e) => handlerFilterChange(e)}
+        checked={filter === 'population'}
+      />
     </div>
   )
 }
