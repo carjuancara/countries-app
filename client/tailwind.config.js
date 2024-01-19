@@ -8,7 +8,7 @@ export default {
     colors: {
       fondo: '#023047',
       primario: '#ffb703',
-      secundario: '#fb8500'
+      secundario: '#7480ff'
     },
     extend: {}
   },
