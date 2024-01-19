@@ -7,7 +7,7 @@ const data = {
 }
 function LandingPage () {
   return (
-    <div className='hero min-h-screen bg-ima' style={{ backgroundImage: `${data.urlImage}` }}>
+    <div className='hero h-screen' style={{ backgroundImage: `${data.urlImage}` }}>
       <div className='hero-overlay bg-opacity-60' />
       <div className='hero-content text-center text-neutral-content'>
         <div className='max-w-screen-lg '>
