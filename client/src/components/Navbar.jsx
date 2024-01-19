@@ -8,22 +8,34 @@ import image from '../assets/location.png'
 const Navbar = () => {
   const [filterCountries, setFilterCountries] = useState('')
   const dispatch = useDispatch()
-  const location = useLocation()
+  const location = useLocation().pathname
   const { allCountries } = useSelector(state => state.countries)
+  const handleKeydown = (event) => {
+    if (event.key === 'Enter') {
+      dispatch(filterByName(filterCountries))
+      setFilterCountries('')
+    }
+  }
+
   return (
     <nav className='bg-gray-800 p-4'>
       <div className='flex items-center justify-between'>
         {/* Icono a la izquierda */}
         <div className='flex items-center'>
           <Link to='/home'><img src={image} alt='imagen del mundo' className='w-8 h-8' /></Link>
-          <span className='ml-4 text-white text-3xl font-semibold'>App de paises</span>
+          <span className='ml-4 text-white text-3xl font-semibold items-center justify-center flex'>App de paises</span>
         </div>
 
-        <div className='flex w-auto justify-between gap-4'>
-          <span className=' text-4xl mb-2'>Filtros</span>
-          <FilterButtonRadio />
-          <OrderButtonRadio />
-          {allCountries.length < 250 && location !== '/home' &&
+        <div className='flex w-auto justify-between items-center gap-8'>
+          <div className='flex items-center justify-center gap-2'>
+            <span className=' text-4xl mb-2'>Filtros</span>
+            <FilterButtonRadio />
+          </div>
+          <div className='flex items-center justify-center gap-2'>
+            <span className=' text-4xl mb-2'>Orden</span>
+            <OrderButtonRadio />
+          </div>
+          {location === '/home' && allCountries.length < 250 &&
             <button
               className='w-44 text-fondo h-12 rounded-md font-bold bg-secundario cursor-pointer'
               onClick={() => {
@@ -41,6 +53,7 @@ const Navbar = () => {
             className='px-4 py-2 border border-gray-300 rounded-md'
             value={filterCountries}
             onChange={(e) => setFilterCountries(e.target.value)}
+            onKeyDown={handleKeydown}
           />
           <button
             className='absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-3 py-2 rounded-md'
