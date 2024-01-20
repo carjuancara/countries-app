@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage'
 import CardDetail from './components/CardDetail'
 import Navbar from './components/Navbar'
 import Paginated from './components/Paginated'
+import NewActivity from './components/NewActivity'
 
 function App () {
   return (
@@ -26,6 +27,16 @@ function App () {
             <div>
               <Navbar />
               <CardDetail />
+              <Footer />
+            </div>
+        }
+        />
+        <Route
+          path='/newactivity'
+          element={
+            <div>
+              <Navbar />
+              <NewActivity />
               <Footer />
             </div>
         }
