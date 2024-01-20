@@ -14,7 +14,8 @@ const Paginated = () => {
   return (
     <div className='flex mt-5 w-4/5 mx-auto justify-center items-center font-bold py-4 gap-12'>
       <button
-        className='w-44 text-fondo h-10 rounded-md font-bold bg-secundario cursor-pointer'
+        aria-label='pagina anterior'
+        className='w-44 text-neutral-800 h-10 rounded-md font-bold bg-secundario cursor-pointer'
         onClick={handlePrevPage}
         disabled={currentPage === 1}
       >
@@ -28,7 +29,8 @@ const Paginated = () => {
         onClick={handleInputClick}
       />
       <button
-        className='w-44 text-fondo h-10 rounded-md font-bold bg-secundario cursor-pointer'
+        aria-label='pagina siguiente'
+        className='w-44 text-neutral-800 h-10 rounded-md font-bold bg-secundario cursor-pointer'
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
       >
