@@ -37,6 +37,7 @@ const Navbar = () => {
           </div>
           {location === '/home' && allCountries.length < 250 &&
             <button
+              aria-label='restaurar todos los registros de paises'
               className='w-44 text-fondo h-12 rounded-md font-bold bg-secundario cursor-pointer'
               onClick={() => {
                 dispatch(restoreAllCountries())
@@ -46,17 +47,29 @@ const Navbar = () => {
             </button>}
         </div>
         {/* Input de búsqueda y botón */}
-        <div className='relative'>
+        <div className='relative flex gap-20'>
+          {location !== '/newactivity' &&
+            <div>
+              <Link to='/newactivity'>
+                <div className='indicator'>
+                  <span className='indicator-item badge badge-primary text-neutral-900'>Crear</span>
+                  <div className='grid w-40 h-12 bg-base-300 place-items-center rounded-lg text-primario'>Actividad Turistica</div>
+                </div>
+              </Link>
+            </div>}
+
           <input
             type='text'
             placeholder='Buscar...'
-            className='px-4 py-2 border border-gray-300 rounded-md'
+            className='input input-bordered input-primary w-full'
+            // className='px-4 py-2 border border-gray-300 rounded-md'
             value={filterCountries}
             onChange={(e) => setFilterCountries(e.target.value)}
             onKeyDown={handleKeydown}
           />
           <button
-            className='absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-3 py-2 rounded-md'
+            aria-label='buscar parcial del nombre'
+            className='absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 px-3 py-2 rounded-md'
           >
             <svg
               xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-6 h-6' onClick={() => {

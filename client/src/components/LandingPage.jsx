@@ -13,7 +13,7 @@ function LandingPage () {
         <div className='max-w-screen-lg '>
           {/*  <h1 className='mb-5 text-5xl font-bold text-secundario'>Hello there</h1> */}
           <p className=' text-6xl text-black mb-5 p-4 rounded-lg bg-white bg-opacity-80 backdrop-blur-md '>{data.phrase}</p>
-          <Link to='/home'><button className='m-5 w-44 text-fondo h-10 rounded-md font-bold bg-secundario cursor-pointer'>{data.textButton}</button></Link>
+          <Link to='/home'><button aria-label='Ingresar al sitio web' className='m-5 w-44 text-neutral-900 h-10 rounded-md font-bold bg-secundario cursor-pointer'>{data.textButton}</button></Link>
         </div>
       </div>
     </div>
