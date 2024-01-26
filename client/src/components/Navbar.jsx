@@ -25,30 +25,34 @@ const Navbar = () => {
           <Link to='/home'><img src={image} alt='imagen del mundo' className='w-8 h-8' /></Link>
           <span className='ml-4 text-white text-3xl font-semibold items-center justify-center flex'>App de paises</span>
         </div>
+        {/* oculta el filtro y orden si esta en ruta /countriesdetail */}
+        {location.slice(0, -4) !== '/countriesdetail' && (
 
-        <div className='flex w-auto justify-between items-center gap-8'>
-          <div className='flex items-center justify-center gap-2'>
-            <span className=' text-4xl mb-2'>Filtros</span>
-            <FilterButtonRadio />
+          <div className='flex w-auto justify-between items-center gap-8'>
+            <div className='flex items-center justify-center gap-2'>
+              <span className=' text-4xl mb-2'>Filtros</span>
+              <FilterButtonRadio />
+            </div>
+            <div className='flex items-center justify-center gap-2'>
+              <span className=' text-4xl mb-2'>Orden</span>
+              <OrderButtonRadio />
+            </div>
+            {location === '/home' && allCountries.length < 250 &&
+              <button
+                aria-label='restaurar todos los registros de paises'
+                className='w-44 text-fondo h-12 rounded-md font-bold bg-secundario cursor-pointer'
+                onClick={() => {
+                  dispatch(restoreAllCountries())
+                  setFilterCountries('')
+                }}
+              >Restaurar Paises
+              </button>}
           </div>
-          <div className='flex items-center justify-center gap-2'>
-            <span className=' text-4xl mb-2'>Orden</span>
-            <OrderButtonRadio />
-          </div>
-          {location === '/home' && allCountries.length < 250 &&
-            <button
-              aria-label='restaurar todos los registros de paises'
-              className='w-44 text-fondo h-12 rounded-md font-bold bg-secundario cursor-pointer'
-              onClick={() => {
-                dispatch(restoreAllCountries())
-                setFilterCountries('')
-              }}
-            >Restaurar Paises
-            </button>}
-        </div>
+        )}
         {/* Input de búsqueda y botón */}
         <div className='relative flex gap-20'>
-          {location !== '/newactivity' &&
+          {/* oculta boton de nueva actividad si no esta en /home */}
+          {location === '/home' &&
             <div>
               <Link to='/newactivity'>
                 <div className='indicator'>
@@ -58,28 +62,31 @@ const Navbar = () => {
               </Link>
             </div>}
 
-          <input
-            type='text'
-            placeholder='Buscar...'
-            className='input input-bordered input-primary w-full'
-            // className='px-4 py-2 border border-gray-300 rounded-md'
-            value={filterCountries}
-            onChange={(e) => setFilterCountries(e.target.value)}
-            onKeyDown={handleKeydown}
-          />
-          <button
-            aria-label='buscar parcial del nombre'
-            className='absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 px-3 py-2 rounded-md'
-          >
-            <svg
-              xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-6 h-6' onClick={() => {
-                dispatch(filterByName(filterCountries))
-                setFilterCountries('')
-              }}
+          {/* oculta input para buscar si no esta en /home */}
+          {location === '/home' &&
+            <input
+              type='text'
+              placeholder='Buscar...'
+              className='input input-bordered input-primary w-full'
+              value={filterCountries}
+              onChange={(e) => setFilterCountries(e.target.value)}
+              onKeyDown={handleKeydown}
+            />}
+          {location === '/home' &&
+            <button
+              aria-label='buscar parcial del nombre'
+              className='absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 px-3 py-2 rounded-md'
             >
-              <path strokeLinecap='round' strokeLinejoin='round' d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z' />
-            </svg>
-          </button>
+              <svg
+                xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-6 h-6' onClick={() => {
+                  dispatch(filterByName(filterCountries))
+                  setFilterCountries('')
+                }}
+              >
+                <path strokeLinecap='round' strokeLinejoin='round' d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z' />
+              </svg>
+            </button>}
+
         </div>
 
       </div>
