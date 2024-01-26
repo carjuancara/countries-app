@@ -2,6 +2,8 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
+import Alerts from './Alerts'
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(6, 'El nombre es demasiado corto!')
@@ -21,6 +23,10 @@ const SignupSchema = Yup.object().shape({
 })
 
 function NewActivity () {
+  const [alertMessage, setAlertMessage] = useState({
+    type: '',
+    message: ''
+  })
   const formik = useFormik({
     initialValues: {
       name: '', // nombre de la activadad turistica
@@ -32,8 +38,19 @@ function NewActivity () {
     validationSchema: SignupSchema,
     validateOnChange: false,
     onSubmit: values => {
-      values.countries = values.countries.map(country => country.id)
-      axios.post('http://localhost:3001/activities', values)
+      try {
+        values.countries = values.countries.map(country => country.id)
+        axios.post('http://localhost:3001/activities', values)
+        setAlertMessage({ type: 'alert-success', message: 'Se ha creado una nueva actividad!' })
+        formik.resetForm()
+        window.scrollTo(0, 0)
+        setTimeout(() => {
+          setAlertMessage({ message: '', type: '' })
+        }, 5000)
+      } catch (error) {
+        setAlertMessage({ type: 'alert-error', message: 'Ha ocurrido un error' })
+        console.log(error)
+      }
     }
   })
 
@@ -169,9 +186,25 @@ function NewActivity () {
                   {country.name}
                 </button>
               ))}
+
           </div>
         </div>
       </div>
+      {alertMessage.message.length && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            background: 'green',
+            color: 'white',
+            padding: '10px',
+            borderRadius: '5px',
+            zIndex: 9999 // Asegura que esté por encima de otros elementos
+          }}
+        >
+          <Alerts type={alertMessage.type} message={alertMessage.message} />
+        </div>)}
     </form>
   )
 }
