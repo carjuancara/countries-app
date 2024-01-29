@@ -56,7 +56,7 @@ function NewActivity () {
 
   // Función para manejar la adición de un país a la propiedad 'country'
   const handleAddCountry = selectedCountryID => {
-    if (!formik.values.countries.includes(selectedCountryID)) {
+    if (!formik.values.countries.find(country => country.id === selectedCountryID)) {
       const selected = backupCountries.find(select => select.id === selectedCountryID)
       formik.setFieldValue('countries', [...formik.values.countries, { id: selected.id, name: selected.name }])
     }
