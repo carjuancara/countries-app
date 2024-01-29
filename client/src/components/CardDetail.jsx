@@ -46,7 +46,7 @@ export default function CardDetail () {
           </div>
           <div className='flex mt-2 pt-4 flex-col justify-start w-2/3 h-[45vh] rounded-lg border-2 border-gray-400'>
             <div className='flex flex-col mb-4 text-white justify-center'>
-              <label className='mb-4 flex text-bold flex-col rounded-xl'>Actividades Turisticas</label>
+              <label className='mb-4 flex text-bold flex-col rounded-xl items-center'>Actividades Turisticas</label>
               {countriesDetail && <TableActivity activities={countriesDetail.Activities} />}
             </div>
           </div>
