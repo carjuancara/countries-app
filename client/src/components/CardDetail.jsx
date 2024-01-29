@@ -34,57 +34,19 @@ export default function CardDetail () {
                 {'Detalles sobre ' + countriesDetail.name}{' '}
               </label>
             </div>
-            <div className='flex justify-start pl-1 mx-2 rounded-lg'>
-              <label className='text-gray-400'>
-                Nombre:{' '}
-                <span className='pt-2 pl-2 text-lg'>{countriesDetail.name}</span>{' '}
-              </label>
-            </div>
-            <div className='flex justify-start pl-1 mx-2 rounded-lg'>
-              <label className='text-gray-400'>
-                Id:{' '}
-                <span className='pt-2 pl-2 text-lg'>{countriesDetail.id}</span>
-              </label>
-            </div>
-            <div className='flex justify-start pl-1 mx-2 rounded-lg'>
-              <label className='text-gray-400'>Continente:</label>
-              <span className=' pt-2 pl-2 text-lg text-gray-400'>
-                {countriesDetail.continents}
-              </span>
-            </div>
-            <div className='flex justify-start pl-1 mx-2 rounded-lg'>
-              <label className='text-gray-400'>SubRegion:</label>
-              <span className=' pt-2 pl-2 text-lg text-gray-400'>
-                {countriesDetail.subregion}
-              </span>
-            </div>
-            <div className='flex justify-start pl-1 mx-2 rounded-lg'>
-              <label className='text-gray-400'>
-                Capital:{' '}
-                <span className='pt-2 pl-2 text-lg'>
-                  {countriesDetail.capital}
-                </span>
-              </label>
-            </div>
-            <div className='flex justify-start pl-1 mx-2 rounded-lg'>
-              <label className='text-gray-400'>
-                Area:{' '}
-                <span className='pt-2 pl-2 text-lg'>{countriesDetail.area}</span>
-              </label>
-            </div>
-            <div className='flex justify-start pl-1 mx-2 rounded-lg'>
-              <label className='text-gray-400'>
-                Población:{' '}
-                <span className='pt-2 pl-2 text-lg'>
-                  {countriesDetail.population}
-                </span>
-              </label>
-            </div>
+            {Object.entries(countriesDetail)
+              .filter(([clave]) => clave !== 'Activities' && clave !== 'flags')
+              .map(([clave, valor]) => (
+                <div key={clave} className='flex justify-start pl-1 mx-2 rounded-lg'>
+                  <label className='text-gray-400'>
+                    {clave}: <span className='pt-2 pl-2 text-lg'>{valor}</span>
+                  </label>
+                </div>
+              ))}
           </div>
           <div className='flex mt-2 pt-4 flex-col justify-start w-2/3 h-[45vh] rounded-lg border-2 border-gray-400'>
             <div className='flex flex-col mb-4 text-white justify-center'>
               <label className='mb-4 flex text-bold flex-col rounded-xl'>Actividades Turisticas</label>
-
               {countriesDetail && <TableActivity activities={countriesDetail.Activities} />}
             </div>
           </div>
