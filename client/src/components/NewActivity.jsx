@@ -72,7 +72,7 @@ function NewActivity () {
   const { backupCountries } = useSelector(state => state.countries)
   return (
     <form className='flex justify-center items-center rounded-lg gap-4' onSubmit={formik.handleSubmit}>
-      <div className='flex flex-col h-1/4 justify-center items-center gap-8 rounded-lg border-2 border-solid border-secundario p-4'>
+      <div className='flex flex-col justify-center items-center gap-8 rounded-lg border-2 border-solid border-secundario p-4'>
         <h1 className='flex  justify-center m-10 text-2xl underline'>
           Crea una nueva actividad turistica
         </h1>
@@ -152,7 +152,7 @@ function NewActivity () {
           <input className='btn btn-primary px-14 bg-secundario text-neutral-900' type='submit' value='Guardar Actividad' />
         </div>
       </div>
-      <div className='flex flex-col h-1/4 justify-center items-center gap-8 rounded-lg border-2 border-solid border-secundario p-4'>
+      <div className='flex flex-col justify-center items-center gap-8 rounded-lg border-2 border-solid border-secundario p-4 '>
         <div className='flex w-full flex-col justify-center items-start px-4 gap-1'>
           {/* Listado de paises */}
           <select
@@ -175,7 +175,7 @@ function NewActivity () {
             <div className='text-error'>{formik.errors.countries}</div>
           )}
           {/* paises agregados al arreglo de countries */}
-          <div className='flex w-full justify-center items-center my-4 rounded-lg border-solid border-secundario border-2 gap-4 max-w-96 flex-wrap'>
+          <div className='flex min-w-96 max-w-96 min-h-[65.5vh] max-h-[65.5vh] overflow-y-auto justify-center items-center my-4 rounded-lg border-solid border-secundario border-2 gap-4 flex-wrap'>
             {formik.values.countries &&
               formik.values.countries.map((country) => (
                 <button
