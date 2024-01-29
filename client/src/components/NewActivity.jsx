@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import Alerts from './Alerts'
+import { Link } from 'react-router-dom'
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(6, 'El nombre es demasiado corto!')
@@ -175,7 +176,7 @@ function NewActivity () {
             <div className='text-error'>{formik.errors.countries}</div>
           )}
           {/* paises agregados al arreglo de countries */}
-          <div className='flex w-full justify-center items-center mt-4 rounded-lg border-solid border-secundario border-2 gap-4 max-w-96 flex-wrap'>
+          <div className='flex w-full justify-center items-center my-4 rounded-lg border-solid border-secundario border-2 gap-4 max-w-96 flex-wrap'>
             {formik.values.countries &&
               formik.values.countries.map((country) => (
                 <button
@@ -190,8 +191,31 @@ function NewActivity () {
               ))}
 
           </div>
+          <div className='flex justify-end items-center w-full h-10 pr-60'>
+            <Link
+              to='/home'
+              className='flex h-10 px-4 rounded-lg text-neutral-900 gap-4 items-center bg-secundario '
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth={1.5}
+                stroke='currentColor'
+                className='w-6 h-6'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  d='M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3'
+                />
+              </svg>
+              Volver al inicio
+            </Link>
+          </div>
         </div>
       </div>
+
       {alertMessage.message.length > 0 && (
         <div
           style={{
