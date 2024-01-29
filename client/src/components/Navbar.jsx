@@ -26,7 +26,7 @@ const Navbar = () => {
           <span className='ml-4 text-white text-3xl font-semibold items-center justify-center flex'>App de paises</span>
         </div>
         {/* oculta el filtro y orden si esta en ruta /countriesdetail */}
-        {location.slice(0, -4) !== '/countriesdetail' && (
+        {location.slice(0, -4) !== '/countriesdetail' && location !== '/newactivity' && (
 
           <div className='flex w-auto justify-between items-center gap-8'>
             <div className='flex items-center justify-center gap-2'>
