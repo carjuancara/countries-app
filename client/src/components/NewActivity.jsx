@@ -149,7 +149,7 @@ function NewActivity () {
 
         </div>
         <div className=' pl-64'>
-          <input className='btn px-14 bg-secundario text-neutral-900' type='submit' value='Guardar Actividad' />
+          <input className='btn btn-primary px-14 bg-secundario text-neutral-900' type='submit' value='Guardar Actividad' />
         </div>
       </div>
       <div className='flex flex-col h-1/4 justify-center items-center gap-8 rounded-lg border-2 border-solid border-secundario p-4'>
