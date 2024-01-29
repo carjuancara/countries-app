@@ -90,7 +90,7 @@ function NewActivity () {
             onChange={formik.handleChange}
             value={formik.values.name}
           />
-          {formik.touched.name && formik.errors.name && (<div>{formik.errors.name}</div>)}
+          {formik.touched.name && formik.errors.name && (<div className='text-error'>{formik.errors.name}</div>)}
         </div>
         <div className='flex w-full flex-col justify-center items-start px-4 gap-1'>
           <label className='w-full'>
@@ -106,7 +106,7 @@ function NewActivity () {
             onChange={formik.handleChange}
             value={formik.values.duration}
           />
-          {formik.touched.duration && formik.errors.duration && (<div>{formik.errors.duration}</div>)}
+          {formik.touched.duration && formik.errors.duration && (<div className='text-error'>{formik.errors.duration}</div>)}
         </div>
         <div className='flex w-full flex-col justify-center items-start px-4 gap-1'>
           <label>Dificultad</label>
@@ -125,7 +125,7 @@ function NewActivity () {
               />
             ))}
           </div>
-          {formik.touched.difficulty && formik.errors.difficulty && (<div>{formik.errors.difficulty}</div>)}
+          {formik.touched.difficulty && formik.errors.difficulty && (<div className='text-error'>{formik.errors.difficulty}</div>)}
 
         </div>
         <div className='flex w-full flex-col justify-center items-start px-4 pb-8 gap-1'>
@@ -145,7 +145,7 @@ function NewActivity () {
               />
             ))}
           </div>
-          {formik.touched.season && formik.errors.season && (<div>{formik.errors.season}</div>)}
+          {formik.touched.season && formik.errors.season && (<div className='text-error'>{formik.errors.season}</div>)}
 
         </div>
         <div className=' pl-64'>
@@ -155,8 +155,10 @@ function NewActivity () {
       <div className='flex flex-col h-1/4 justify-center items-center gap-8 rounded-lg border-2 border-solid border-secundario p-4'>
         <div className='flex w-full flex-col justify-center items-start px-4 gap-1'>
           {/* Listado de paises */}
-          <select value='' className='select select-primary w-full' onChange={e => handleAddCountry(e.target.value)}>
-            <option value='' disabled>
+          <select
+            className='select select-primary w-full' onChange={e => handleAddCountry(e.target.value)}
+          >
+            <option value='0'>
               Selecciona un país
             </option>
             {backupCountries && backupCountries?.map(country => (
@@ -170,7 +172,7 @@ function NewActivity () {
             ))}
           </select>
           {formik.touched.countries && formik.errors.countries && (
-            <div>{formik.errors.countries}</div>
+            <div className='text-error'>{formik.errors.countries}</div>
           )}
           {/* paises agregados al arreglo de countries */}
           <div className='flex w-full justify-center items-center mt-4 rounded-lg border-solid border-secundario border-2 gap-4 max-w-96 flex-wrap'>
@@ -180,7 +182,7 @@ function NewActivity () {
                   key={country.id}
                   id={country.id}
                   type='button'
-                  className='btn px-4 py-2 bg-primary text-neutral-900'
+                  className='btn btn-primary px-4 py-2 bg-primary text-neutral-900'
                   onClick={() => hanlerClose(country.id)}
                 >
                   {country.name}
@@ -190,7 +192,7 @@ function NewActivity () {
           </div>
         </div>
       </div>
-      {alertMessage.message.length && (
+      {alertMessage.message.length > 0 && (
         <div
           style={{
             position: 'absolute',
@@ -200,7 +202,7 @@ function NewActivity () {
             color: 'white',
             padding: '10px',
             borderRadius: '5px',
-            zIndex: 9999 // Asegura que esté por encima de otros elementos
+            zIndex: 2 // Asegura que esté por encima de otros elementos
           }}
         >
           <Alerts type={alertMessage.type} message={alertMessage.message} />
