@@ -57,7 +57,7 @@ function NewActivity () {
   // Función para manejar la adición de un país a la propiedad 'country'
   const handleAddCountry = selectedCountryID => {
     if (!formik.values.countries.includes(selectedCountryID)) {
-      const selected = allCountries.find(select => select.id === selectedCountryID)
+      const selected = backupCountries.find(select => select.id === selectedCountryID)
       formik.setFieldValue('countries', [...formik.values.countries, { id: selected.id, name: selected.name }])
     }
   }
@@ -69,7 +69,7 @@ function NewActivity () {
     formik.setFieldValue('countries', updatedCountries)
   }
 
-  const { allCountries } = useSelector(state => state.countries)
+  const { backupCountries } = useSelector(state => state.countries)
   return (
     <form className='flex justify-center items-center rounded-lg gap-4' onSubmit={formik.handleSubmit}>
       <div className='flex flex-col h-1/4 justify-center items-center gap-8 rounded-lg border-2 border-solid border-secundario p-4'>
@@ -159,7 +159,7 @@ function NewActivity () {
             <option value='' disabled>
               Selecciona un país
             </option>
-            {allCountries && allCountries?.map(country => (
+            {backupCountries && backupCountries?.map(country => (
               <option
                 key={country.id}
                 id={country.id}
