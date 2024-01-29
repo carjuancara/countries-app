@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import TableActivity from './TableActivity'
 export default function CardDetail () {
   const { id } = useParams()
@@ -20,15 +20,15 @@ export default function CardDetail () {
   return (
     <div className='flex flex-col h-full flex-wrap justify-center text-3xl bg-gray-800 gap-4'>
       <div className='flex flex-wrap justify-center text-3xl bg-gray-800'>
-        <div className='flex w-full h-[45vh] mt-8'>
-          <div className=' block mt-2 mr-4 rounded-lg w-1/4 h-[45vh] border-2 border-gray-400'>
+        <div className='flex w-4/5 h-[45vh] mt-8 gap-4'>
+          <div className=' block mt-2 rounded-lg w-1/3 h-[45vh] border-2 border-gray-400'>
             <img
               className='rounded-lg h-full'
               src={countriesDetail.flags}
               alt='img not found'
             />
           </div>
-          <div className='flex mt-2 pt-4 flex-col justify-start w-2/3 h-[45vh] rounded-lg border-2 border-gray-400'>
+          <div className='flex mt-2 pt-4 flex-col justify-start w-1/3 h-[45vh] rounded-lg border-2 border-gray-400'>
             <div className='flex mb-4 text-white font-bold rounded-xl justify-center'>
               <label className='text-white'>
                 {'Detalles sobre ' + countriesDetail.name}{' '}
@@ -44,7 +44,7 @@ export default function CardDetail () {
                 </div>
               ))}
           </div>
-          <div className='flex mt-2 pt-4 flex-col justify-start w-2/3 h-[45vh] rounded-lg border-2 border-gray-400'>
+          <div className='flex mt-2 pt-4 flex-col justify-start w-1/3 h-[45vh] rounded-lg border-2 border-gray-400'>
             <div className='flex flex-col mb-4 text-white justify-center'>
               <label className='mb-4 flex text-bold flex-col rounded-xl items-center'>Actividades Turisticas</label>
               {countriesDetail && <TableActivity activities={countriesDetail.Activities} />}
@@ -52,28 +52,7 @@ export default function CardDetail () {
           </div>
         </div>
       </div>
-      <div className='flex justify-end items-center w-full h-10 pr-60'>
-        <Link
-          to='/home'
-          className='flex h-10 px-4 rounded-lg text-neutral-900 gap-4 items-center bg-secundario '
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth={1.5}
-            stroke='currentColor'
-            className='w-6 h-6'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3'
-            />
-          </svg>
-          Volver al inicio
-        </Link>
-      </div>
+
     </div>
   )
 }
