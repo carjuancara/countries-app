@@ -32,7 +32,7 @@ const countriesSlice = createSlice({
     },
     filterByName: (state, action) => {
       const search = action.payload.toLowerCase()
-      state.allCountries = state.allCountries.filter(country => country.name.toLowerCase().includes(search))
+      state.allCountries = state.backupCountries.filter(country => country.name.toLowerCase().includes(search))
       state.currentPage = 1
     },
     filterAllCountries: (state) => {
