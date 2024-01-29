@@ -1,4 +1,4 @@
-const { Country } = require('../db')
+const { Country, Activity } = require('../db')
 const { Op } = require('sequelize')
 const axios = require('axios')
 
@@ -46,19 +46,35 @@ const getCountriesById = async (req, res) => {
   const { idCountry } = req.params
 
   try {
-    if (idCountry.length !== 3) return res.status(400).json({ Error: 'The country ID must be 3 letters' })
+    if (idCountry.length !== 3) {
+      return res.status(400).json({ Error: 'The country ID must be 3 letters' })
+    }
+
     const flag = validateStr(idCountry)
-    if (flag) return res.status(400).json({ error: 'ID cannot contain numbers' })
-    const getCountry = await Country.findAll({
-      where: {
-        id: idCountry.toUpperCase()
+    if (flag) {
+      return res.status(400).json({ error: 'ID cannot contain numbers' })
+    }
+
+    const country = await Country.findOne({
+      where: { id: idCountry.toUpperCase() },
+      include: {
+        model: Activity,
+        through: {
+          attributes: []
+        }
       }
     })
-    res.status(200).json(getCountry)
+    if (!country) {
+      return res.status(404).json({ error: 'Country not found' })
+    }
+
+    // La respuesta ahora contendrá las actividades relacionadas con el país
+    res.status(200).json(country)
   } catch (error) {
     res.status(400).json({ Error: error.message })
   }
 }
+
 module.exports = {
   getCountries,
   getCountriesById
