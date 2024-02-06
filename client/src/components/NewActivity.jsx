@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import Alerts from './Alerts'
+import { BASE_URL } from '../redux/countriesAction'
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(6, 'El nombre es demasiado corto!')
@@ -40,7 +41,7 @@ function NewActivity () {
     onSubmit: values => {
       try {
         values.countries = values.countries.map(country => country.id)
-        axios.post('http://localhost:3001/activities', values)
+        axios.post(`${BASE_URL}`, values)
         setAlertMessage({ type: 'alert-success', message: 'Se ha creado una nueva actividad!' })
         formik.resetForm()
         window.scrollTo(0, 0)
