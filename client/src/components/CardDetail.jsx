@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import TableActivity from './TableActivity'
+import { BASE_URL } from '../redux/countriesAction'
 export default function CardDetail () {
   const { id } = useParams()
   const [countriesDetail, setCountriesDetail] = useState({})
 
   useEffect(() => {
     function getCountry (id) {
-      fetch(`http://localhost:3001/countries/${id}`)
+      fetch(`${BASE_URL}/${id}`)
         .then(response => response.json())
         .then((res) => {
           setCountriesDetail(res)
