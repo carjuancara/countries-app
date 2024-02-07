@@ -8,7 +8,7 @@ export default function CardDetail () {
 
   useEffect(() => {
     function getCountry (id) {
-      fetch(`${BASE_URL}/${id}`)
+      fetch(`${BASE_URL}/countries/${id}`)
         .then(response => response.json())
         .then((res) => {
           setCountriesDetail(res)
