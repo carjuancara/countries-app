@@ -41,7 +41,7 @@ function NewActivity () {
     onSubmit: values => {
       try {
         values.countries = values.countries.map(country => country.id)
-        axios.post(`${BASE_URL}`, values)
+        axios.post(`${BASE_URL}/activities`, values)
         setAlertMessage({ type: 'alert-success', message: 'Se ha creado una nueva actividad!' })
         formik.resetForm()
         window.scrollTo(0, 0)
