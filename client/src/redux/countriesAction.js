@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { updateAllCountries } from '../redux/countriesSlice'
 
-export const BASE_URL = import.meta.env.VITE_BASE_URL
+export const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:3001'
 
 // trae todos los paises al inicio
 export const getAllCountries = () => (dispatch) => {
